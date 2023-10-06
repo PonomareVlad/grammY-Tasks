@@ -1,0 +1,13 @@
+{
+  "name": "grammy-tasks",
+  "version": "0.0.0",
+  "description": "grammY tasks queue based on Agenda",
+  "main": "index.mjs",
+  "author": "Vladislav Ponomarev <PonomareVlad@users.noreply.github.com> (https://PonomareVlad.ru)",
+  "funding": "https://PonomareVlad.ru/donate",
+  "license": "MIT",
+  "peerDependencies": {
+    "agenda-rest-client": "github:PonomareVlad/agenda-rest-client",
+    "vercel-grammy": "*"
+  }
+}

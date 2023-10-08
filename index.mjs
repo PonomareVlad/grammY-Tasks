@@ -43,4 +43,4 @@ export const callbackHandler = (...args) => async request => {
     return jsonResponse(result, {space: 2});
 }
 
-export const intiJob = (...args) => createAgendaJob(TASK_JOB_NAME, ...args);
+export const initJob = (...args) => createAgendaJob(TASK_JOB_NAME, ...args);

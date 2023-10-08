@@ -23,7 +23,7 @@ export class BaseTask {
     static every = (data, ...args) => new this(data).every(...args)
 
     static define(name = this.name) {
-        globalThis.tasks.set(name, this);
+        if (globalThis?.tasks) globalThis.tasks.set(name, this);
         return this;
     }
 

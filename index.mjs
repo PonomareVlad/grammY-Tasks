@@ -1,11 +1,16 @@
 import {jsonResponse} from "vercel-grammy";
+import {createAgendaJob} from "agenda-rest-client";
 
-export default globalThis.tasks = new Map();
+export {tasks} from "./tasks.mjs";
 
 export * from "./tasks/base.mjs"
 export * from "./tasks/bot.mjs"
 export * from "./tasks/user.mjs"
 export * from "./tasks/broadcast.mjs"
+
+export const {
+    TASK_JOB_NAME = "task",
+} = process.env;
 
 const parseQuery = (
     {url} = {}
@@ -22,7 +27,7 @@ export const runHandler = (...args) => async request => {
     return jsonResponse(result, {space: 2});
 }
 
-export const resultHandler = (...args) => async request => {
+export const callbackHandler = (...args) => async request => {
     const {
         data: {
             query: {
@@ -37,3 +42,5 @@ export const resultHandler = (...args) => async request => {
     const result = await targetTask.result(response, ...args);
     return jsonResponse(result, {space: 2});
 }
+
+export const intiJob = (...args) => createAgendaJob(TASK_JOB_NAME, ...args);
